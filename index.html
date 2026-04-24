@@ -1,227 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amruth Appachu K - Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-purple: #9b72f2;
-            --soft-purple: #f3efff;
-            --pink-accent: #ff7e9d;
-            --dark-text: #333;
-            --light-grey: #f9f9f9;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amruth Appachu K – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --purple: #7c3aed;
+      --violet: #8b5cf6;
+      --pink: #ec4899;
+      --grad: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #fafafa; color: #1a1a2e; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            color: var(--dark-text);
-        }
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(139,92,246,0.12);
+      padding: 1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-family:'Playfair Display',serif; font-size:1.35rem; font-weight:700; background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { display:block; width:26px; height:2.5px; border-radius:4px; background: var(--grad); transition:.3s; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    /* ─── GRADIENT BADGE ─── */
+    .grad-btn {
+      display:inline-flex; align-items:center; gap:.45rem;
+      background: var(--grad); color:#fff;
+      padding:.7rem 1.8rem; border-radius:50px;
+      font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+      border:none; cursor:pointer;
+      box-shadow: 0 8px 28px rgba(139,92,246,.35);
+      transition: transform .2s, box-shadow .2s;
+      text-decoration:none;
+    }
+    .grad-btn:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(139,92,246,.45); }
 
-        /* Header Section */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--soft-purple);
-            border-radius: 20px;
-            padding: 60px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
+    .grad-text { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-        .header-content { flex: 1; z-index: 2; }
-        .header-content h1 { font-size: 3.5rem; color: var(--primary-purple); margin: 0; line-height: 1.1; }
-        .header-content p { font-size: 1.1rem; margin: 20px 0; color: #555; max-width: 400px; }
+    /* ─── STAT NUMBER ─── */
+    .stat-num { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; line-height:1; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-        .profile-img-container { flex: 1; display: flex; justify-content: center; z-index: 2; }
-        .profile-img-container img {
-            width: 350px;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 20px 20px 0px rgba(155, 114, 242, 0.1);
-        }
+    /* ─── CARD ─── */
+    .card {
+      background:#fff; border-radius:24px;
+      box-shadow: 0 6px 40px rgba(124,58,237,.08);
+      padding:2rem;
+    }
 
-        .btn-cv {
-            background: var(--pink-accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
+    /* ─── TIMELINE ─── */
+    .timeline { position:relative; padding-left:2rem; }
+    .timeline::before { content:''; position:absolute; left:.6rem; top:0; bottom:0; width:2px; background:linear-gradient(180deg,#7c3aed,#ec4899); border-radius:2px; }
+    .timeline-dot {
+      position:absolute; left:0; top:.35rem;
+      width:1.2rem; height:1.2rem; border-radius:50%;
+      background:var(--grad); box-shadow:0 0 0 4px rgba(139,92,246,.2);
+    }
+    .timeline-item { position:relative; padding-bottom:2.5rem; }
 
-        /* Main Profile Grid */
-        .profile-section { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 80px; }
+    /* ─── SKILL PILL ─── */
+    .skill-pill {
+      display:inline-flex; align-items:center; gap:.4rem;
+      background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));
+      border:1px solid rgba(124,58,237,.2);
+      border-radius:50px; padding:.35rem 1rem;
+      font-size:.8rem; font-weight:500; color:#7c3aed;
+    }
 
-        .sidebar-info {
-            background: var(--primary-purple);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-        }
+    /* ─── PORTFOLIO GRID ─── */
+    .portfolio-card { position:relative; overflow:hidden; border-radius:20px; aspect-ratio:4/3; }
+    .portfolio-card img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .portfolio-card:hover img { transform:scale(1.08); }
+    .portfolio-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(124,58,237,.8) 0%, transparent 60%);
+      opacity:0; transition:.3s; display:flex; align-items:flex-end; padding:1rem;
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity:1; }
 
-        .sidebar-info h4 { font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; opacity: 0.8; letter-spacing: 1px; }
-        .sidebar-info p { margin-bottom: 20px; font-weight: 400; font-size: 0.95rem; }
+    /* ─── TESTIMONIAL ─── */
+    .testimonial-card {
+      background:#fff; border-radius:32px;
+      box-shadow:0 16px 60px rgba(124,58,237,.1);
+      padding:3.5rem 3rem;
+      position:relative; overflow:hidden;
+    }
+    .testimonial-card::before {
+      content:''; position:absolute; top:-60px; right:-60px;
+      width:220px; height:220px; border-radius:50%;
+      background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(236,72,153,.08));
+    }
 
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: center; }
-        .stat-box h2 { color: var(--primary-purple); font-size: 3rem; margin: 0; }
-        .stat-box p { font-size: 0.8rem; text-transform: uppercase; color: #777; font-weight: bold; }
+    /* ─── FORM ─── */
+    .form-input {
+      width:100%; padding:.85rem 1.2rem; border-radius:14px;
+      border:1.5px solid rgba(139,92,246,.2); outline:none;
+      font-family:'DM Sans',sans-serif; font-size:.9rem;
+      transition:border-color .2s, box-shadow .2s;
+      background:#fafaff;
+    }
+    .form-input:focus { border-color:#8b5cf6; box-shadow:0 0 0 4px rgba(139,92,246,.12); }
 
-        /* Experiences Section */
-        .experiences-header { text-align: center; margin-bottom: 50px; }
-        .experiences-header h2 { font-size: 2.5rem; color: var(--primary-purple); }
-        .experiences-header hr { width: 50%; border: 0; border-top: 2px solid var(--primary-purple); opacity: 0.3; }
+    /* ─── FOOTER ─── */
+    footer { background:#0f0a1e; color:#c4b5fd; }
 
-        .edu-item { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 40px; }
-        .edu-date { font-weight: bold; font-size: 0.9rem; }
-        .edu-content h3 { color: var(--primary-purple); margin-top: 0; }
-        .edu-location { color: var(--pink-accent); font-size: 0.85rem; font-weight: bold; }
+    /* ─── FADE-IN ANIMATION ─── */
+    .fade-up { opacity:0; transform:translateY(28px); animation:fadeUp .7s forwards; }
+    @keyframes fadeUp { to { opacity:1; transform:none; } }
+    .delay-1 { animation-delay:.15s; }
+    .delay-2 { animation-delay:.3s; }
+    .delay-3 { animation-delay:.45s; }
 
-        /* Contact Section */
-        .contact-footer {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            background: #fff;
-            padding: 60px 0;
-        }
-
-        .contact-form-card {
-            background: var(--primary-purple);
-            padding: 50px;
-            border-radius: 15px;
-            color: white;
-        }
-
-        .contact-form-card input, .contact-form-card textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
-            box-sizing: border-box;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: #c7b1ff;
-            border: none;
-            color: var(--primary-purple);
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-    </style>
+    /* Responsive */
+    @media(max-width:768px) {
+      .hero-grid { flex-direction:column-reverse !important; }
+      .stats-grid { flex-direction:column !important; }
+      .contact-grid { flex-direction:column !important; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="header-content">
-            <h1>Hello<br>I'm Amruth Appachu K</h1>
-            <p>Assistant Project Engineer at IISc, Civil Engineering professional, and enthusiast of structural design.</p>
-            <a href="#" class="btn-cv">Download CV <i class="fas fa-download"></i></a>
-        </div>
-        <div class="profile-img-container">
-            <img src="profile.jpg" alt="Amruth Appachu K">
-        </div>
-    </header>
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav>
+  <div class="logo">AAK.</div>
+  <div class="hamburger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-    <div class="profile-section">
-        <div class="sidebar-info">
-            <h4>NAME</h4>
-            <p>Amruth Appachu K</p>
-            <h4>ROLE</h4>
-            <p>Assistant Project Engineer (KPWD)</p>
-            <h4>EMAIL</h4>
-            <p>amruthak@iisc.ac.in</p>
-            <h4>LOCATION</h4>
-            <p>Bengaluru, India</p>
-            <h4>TECHNICAL SKILLS</h4>
-            <p>AutoCAD, STAAD Pro, Deep Soil Software</p>
-            <h4>LANGUAGES</h4>
-            <p>English, Kannada, Hindi, Kodava</p>
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem 4rem; max-width:1200px; margin:0 auto;">
+  <div class="hero-grid" style="display:flex; align-items:center; gap:3rem;">
+
+    <!-- LEFT -->
+    <div style="flex:1; min-width:0;" class="fade-up">
+      <span style="display:inline-block; background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1)); border:1px solid rgba(124,58,237,.25); border-radius:50px; padding:.3rem 1rem; font-size:.78rem; font-weight:600; color:#7c3aed; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1.2rem;">Civil Engineer & Project Leader</span>
+      <h1 style="font-size:clamp(2.8rem,5vw,4.5rem); line-height:1.1; margin-bottom:1.2rem;">
+        Hello,<br>I'm <span class="grad-text">Amruth<br>Appachu K</span>
+      </h1>
+      <p style="color:#6b7280; font-size:1.05rem; line-height:1.75; max-width:480px; margin-bottom:2rem;">
+        Assistant Project Engineer at the Indian Institute of Science, Bengaluru.
+        Skilled in project supervision, quality compliance, and structural analysis — turning blueprints into built reality.
+      </p>
+      <a href="Amruth_Appachu_Resume.pdf" download class="grad-btn">
+        <i class="fas fa-download"></i> Download CV
+      </a>
+    </div>
+
+    <!-- RIGHT -->
+    <div style="flex:1; display:flex; justify-content:center;" class="fade-up delay-1">
+      <div style="position:relative;">
+        <!-- Decorative blob -->
+        <div style="position:absolute; inset:-20px; background:var(--grad); border-radius:60% 40% 55% 45%/50% 60% 40% 50%; opacity:.15; filter:blur(24px);"></div>
+        <img
+          src="profile.jpg"
+          alt="Amruth Appachu K"
+          style="width:clamp(240px,35vw,380px); height:clamp(300px,42vw,460px); object-fit:cover; border-radius:32px; position:relative; box-shadow:0 24px 60px rgba(124,58,237,.25);"
+          onerror="this.src='https://ui-avatars.com/api/?name=Amruth+Appachu+K&size=400&background=7c3aed&color=fff&font-size=0.4&rounded=true&bold=true'"
+        />
+        <!-- Floating badge -->
+        <div style="position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); background:#fff; border-radius:16px; padding:.65rem 1.4rem; box-shadow:0 8px 32px rgba(124,58,237,.18); display:flex; align-items:center; gap:.6rem; white-space:nowrap;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.25);"></div>
+          <span style="font-size:.82rem; font-weight:600; color:#374151;">Available for Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STATS + INFO
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem; background:linear-gradient(180deg,#fafaff 0%,#f3f0ff 100%);">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div class="stats-grid" style="display:flex; gap:2.5rem; align-items:stretch;">
+
+      <!-- INFO CARD -->
+      <div class="card fade-up" style="flex:0 0 300px; display:flex; flex-direction:column; gap:1.2rem;">
+        <div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Name</div>
+          <div style="font-weight:600; font-size:1rem; color:#1a1a2e;">Amruth Appachu K</div>
         </div>
         <div>
-            <div class="stats-grid">
-                <div class="stat-box"><h2>12+</h2><p>Years Experience</p></div>
-                <div class="stat-box"><h2>86%</h2><p>M.Tech Aggregate</p></div>
-            </div>
-            <div style="margin-top:40px;">
-                <h3 style="color:var(--primary-purple)">Professional Summary</h3>
-                <p style="color:#666; line-height: 1.6;">Self-motivated and enthusiastic professional with over 12 years of experience in civil engineering works. Currently serving at the Indian Institute of Science, specializing in site inspection, documentation, and coordination of large-scale civil projects.</p>
-                <a href="#" class="btn-cv">Download CV <i class="fas fa-download"></i></a>
-            </div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Birthday</div>
+          <div style="font-weight:600; font-size:.95rem;">17 October 1989</div>
         </div>
-    </div>
-
-    <section class="experiences-header">
-        <h2>Experiences & Education</h2>
-        <p>A journey through academic excellence and professional dedication.</p>
-        <hr>
-    </section>
-
-    <div class="edu-item">
-        <div class="edu-date">
-            S.J.C.I.T (VTU)<br>
-            2012 - 2014
-        </div>
-        <div class="edu-content">
-            <h3>M.Tech - Civil Engineering</h3>
-            <p>Graduated with Distinction (86.83%). Focused on advanced structural analysis and construction technology.</p>
-            <span class="edu-location"><i class="fas fa-map-marker-alt"></i> Chikballapur, Karnataka</span>
-        </div>
-    </div>
-
-    <div class="edu-item">
-        <div class="edu-date">
-            IISc Bengaluru<br>
-            2023 - Present
-        </div>
-        <div class="edu-content">
-            <h3>Assistant Project Engineer</h3>
-            <p>Supervision and execution of civil works within IISc campus. Verification of bills, BOQs, and ensuring compliance with quality standards.</p>
-            <span class="edu-location"><i class="fas fa-map-marker-alt"></i> Bengaluru</span>
-        </div>
-    </div>
-
-    <div class="contact-footer">
         <div>
-            <h2 style="color:var(--primary-purple)">Get In Touch</h2>
-            <p>CV 10, IISc Quarters, Vijnanpura Campus, Bengaluru - 560094</p>
-            <p><strong>Phone:</strong> +91 87623 48577</p>
-            <p><strong>Hobbies:</strong> Painting, Music, Games</p>
-            <div style="margin-top: 30px;">
-                <a href="#"><i class="fab fa-facebook" style="font-size: 1.5rem; margin-right: 15px; color: var(--primary-purple);"></i></a>
-                <a href="#"><i class="fab fa-instagram" style="font-size: 1.5rem; margin-right: 15px; color: var(--primary-purple);"></i></a>
-                <a href="#"><i class="fab fa-linkedin" style="font-size: 1.5rem; color: var(--primary-purple);"></i></a>
-            </div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Role</div>
+          <div style="font-weight:600; font-size:.95rem;">Asst. Project Engineer</div>
         </div>
-        <div class="contact-form-card">
-            <h3 style="margin-top:0">Contact Us</h3>
-            <input type="text" placeholder="Enter your Name">
-            <input type="email" placeholder="Enter a valid email address">
-            <textarea rows="4" placeholder="Enter your message"></textarea>
-            <button class="submit-btn">SUBMIT</button>
+        <div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Email</div>
+          <div style="font-weight:500; font-size:.88rem; color:#7c3aed;">amruthak@iisc.ac.in</div>
         </div>
-    </div>
-</div>
+        <div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Phone</div>
+          <div style="font-weight:500; font-size:.88rem;">(+91) 87623 48577</div>
+        </div>
+        <div>
+          <div style="font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9ca3af; margin-bottom:.2rem;">Location</div>
+          <div style="font-weight:500; font-size:.85rem; color:#4b5563; line-height:1.5;">IISc Campus, Bengaluru – 560094</div>
+        </div>
+        <div style="margin-top:auto; padding-top:.8rem; border-top:1px solid rgba(139,92,246,.12); display:flex; gap:.9rem;">
+          <a href="mailto:amruthak@iisc.ac.in" style="width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem; text-decoration:none;"><i class="fas fa-envelope"></i></a>
+          <a href="#" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0077b5,#0e76a8);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#333,#555);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem; text-decoration:none;"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
 
+      <!-- STATS SIDE -->
+      <div style="flex:1; display:flex; flex-direction:column; gap:2rem;" class="fade-up delay-1">
+        <!-- 2x2 grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+          <div class="card" style="text-align:center; padding:1.5rem;">
+            <div class="stat-num">12+</div>
+            <div style="font-size:.82rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#9ca3af; margin-top:.4rem;">Years Exp.</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1.5rem;">
+            <div class="stat-num">50+</div>
+            <div style="font-size:.82rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#9ca3af; margin-top:.4rem;">Projects</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1.5rem;">
+            <div class="stat-num">4</div>
+            <div style="font-size:.82rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#9ca3af; margin-top:.4rem;">Degrees</div>
+          </div>
+          <div class="card" style="text-align:center; padding:1.5rem;">
+            <div class="stat-num">2</div>
+            <div style="font-size:.82rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#9ca3af; margin-top:.4rem;">Organisations</div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="card" style="padding:1.75rem 2rem;">
+          <h3 class="grad-text" style="font-size:1.35rem; margin-bottom:.75rem;">Transforming Infrastructure, One Project at a Time</h3>
+          <p style="color:#6b7280; line-height:1.8; font-size:.93rem;">
+            With over a decade in civil engineering and project management, I bring precision, accountability, and leadership to every construction challenge — from quality audits and BOQ verification to on-site execution at one of India's premier research institutions.
+          </p>
+          <div style="margin-top:1.25rem; display:flex; flex-wrap:wrap; gap:.6rem;">
+            <span class="skill-pill"><i class="fas fa-drafting-compass"></i> AutoCAD</span>
+            <span class="skill-pill"><i class="fas fa-calculator"></i> STAAD Pro</span>
+            <span class="skill-pill"><i class="fas fa-layer-group"></i> Deep Soil</span>
+            <span class="skill-pill"><i class="fas fa-hard-hat"></i> Site Supervision</span>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <a href="#contact" class="grad-btn" style="font-size:.82rem; padding:.6rem 1.4rem;">
+              <i class="fas fa-paper-plane"></i> Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EXPERIENCE / EDUCATION
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem; max-width:1200px; margin:0 auto;" id="experience">
+  <div style="text-align:center; margin-bottom:3.5rem;" class="fade-up">
+    <h2 class="grad-text" style="font-size:clamp(2rem,4vw,3rem); margin-bottom:.75rem;">Experiences</h2>
+    <p style="color:#9ca3af; max-width:520px; margin:0 auto; font-size:.95rem; line-height:1.7;">
+      A journey built on education, field expertise, and a relentless commitment to engineering excellence.
+    </p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3.5rem;" class="exp-grid">
+
+    <!-- Education Column -->
+    <div class="fade-up delay-1">
+      <div style="display:flex; align-items:center; gap:.7rem; margin-bottom:2rem;">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;"><i class="fas fa-graduation-cap" style="color:#fff; font-size:.9rem;"></i></div>
+        <h3 style="font-size:1.2rem; font-weight:700;">Education</h3>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card" style="padding:1.25rem 1.5rem;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8b5cf6; margin-bottom:.3rem;">2012 – 2014</div>
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:.35rem;">M.Tech – SJCIT, VTU</h4>
+            <p style="font-size:.85rem; color:#6b7280; line-height:1.6;">Completed with Distinction — 86.83%. Specialised in advanced structural and computational methods in Civil Engineering.</p>
+            <span style="display:inline-block; margin-top:.6rem; font-size:.75rem; font-weight:600; color:#10b981;"><i class="fas fa-map-marker-alt"></i> Bengaluru</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card" style="padding:1.25rem 1.5rem;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8b5cf6; margin-bottom:.3rem;">2007 – 2011</div>
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:.35rem;">B.E Civil Engineering – MS Ramaiah</h4>
+            <p style="font-size:.85rem; color:#6b7280; line-height:1.6;">Graduated with Distinction — 85.9%. Built a strong foundation in structural design, construction technology and project planning.</p>
+            <span style="display:inline-block; margin-top:.6rem; font-size:.75rem; font-weight:600; color:#10b981;"><i class="fas fa-map-marker-alt"></i> Bengaluru</span>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="padding-bottom:0;">
+          <div class="timeline-dot"></div>
+          <div class="card" style="padding:1.25rem 1.5rem;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8b5cf6; margin-bottom:.3rem;">2005 – 2007</div>
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:.35rem;">PUC – St. Aloysius PU College</h4>
+            <p style="font-size:.85rem; color:#6b7280; line-height:1.6;">Scored 83.66% in the Science stream (PCM). Laid the analytical foundation for an engineering career.</p>
+            <span style="display:inline-block; margin-top:.6rem; font-size:.75rem; font-weight:600; color:#10b981;"><i class="fas fa-map-marker-alt"></i> Mangalore</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Column -->
+    <div class="fade-up delay-2">
+      <div style="display:flex; align-items:center; gap:.7rem; margin-bottom:2rem;">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;"><i class="fas fa-briefcase" style="color:#fff; font-size:.9rem;"></i></div>
+        <h3 style="font-size:1.2rem; font-weight:700;">Professional</h3>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="card" style="padding:1.25rem 1.5rem;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8b5cf6; margin-bottom:.3rem;">2023 – Present</div>
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:.35rem;">Asst. Project Engineer – IISc</h4>
+            <p style="font-size:.85rem; color:#6b7280; line-height:1.6;">Overseeing civil works on the IISc campus. Coordinating contractors, verifying BOQs, ensuring quality standards and timely project delivery.</p>
+            <div style="margin-top:.6rem; display:flex; flex-wrap:wrap; gap:.4rem;">
+              <span style="font-size:.72rem; background:rgba(124,58,237,.08); color:#7c3aed; border-radius:6px; padding:.2rem .55rem; font-weight:600;">Site Supervision</span>
+              <span style="font-size:.72rem; background:rgba(124,58,237,.08); color:#7c3aed; border-radius:6px; padding:.2rem .55rem; font-weight:600;">Quality Control</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="padding-bottom:0;">
+          <div class="timeline-dot"></div>
+          <div class="card" style="padding:1.25rem 1.5rem;">
+            <div style="font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#8b5cf6; margin-bottom:.3rem;">2014 – 2022</div>
+            <h4 style="font-size:1rem; font-weight:700; margin-bottom:.35rem;">Asst. Engineer – KPWD (on deputation)</h4>
+            <p style="font-size:.85rem; color:#6b7280; line-height:1.6;">Served 9 years with Karnataka Public Works Department. Managed state infrastructure projects including roads, bridges, and public buildings.</p>
+            <div style="margin-top:.6rem; display:flex; flex-wrap:wrap; gap:.4rem;">
+              <span style="font-size:.72rem; background:rgba(236,72,153,.08); color:#ec4899; border-radius:6px; padding:.2rem .55rem; font-weight:600;">Government Projects</span>
+              <span style="font-size:.72rem; background:rgba(236,72,153,.08); color:#ec4899; border-radius:6px; padding:.2rem .55rem; font-weight:600;">Tender Verification</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:3rem;">
+    <a href="#contact" class="grad-btn">Contact Me <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIAL
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem; background:linear-gradient(135deg,#f5f3ff 0%,#fdf2f8 100%);">
+  <div style="max-width:760px; margin:0 auto;">
+    <div class="testimonial-card fade-up" style="text-align:center;">
+      <div style="font-size:4rem; line-height:1; margin-bottom:1.5rem; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">"</div>
+      <p style="font-size:1.1rem; line-height:1.85; color:#374151; font-style:italic; margin-bottom:2rem; position:relative; z-index:1;">
+        Amruth's dedication to precision, her ability to coordinate across teams, and her unwavering commitment to quality have made her an invaluable part of our campus infrastructure initiatives at IISc. She consistently delivers results beyond expectations.
+      </p>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:.6rem;">
+        <div style="width:60px;height:60px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;box-shadow:0 6px 24px rgba(124,58,237,.3);">P</div>
+        <div>
+          <div style="font-weight:700; font-size:1rem; color:#1a1a2e;">Prof. R. Narasimhan</div>
+          <div style="font-size:.82rem; color:#9ca3af;">Senior Faculty, IISc Bengaluru</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PORTFOLIO / SKILLS GRID
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem;" id="portfolio">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap;">
+
+      <!-- Grid -->
+      <div style="flex:2; min-width:280px;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem;">
+          <!-- Cards representing project types -->
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-building" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Campus Infrastructure</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">IISc Projects</span></div>
+          </div>
+
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#a855f7,#ec4899);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-road" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Roads & Bridges</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">KPWD Works</span></div>
+          </div>
+
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#ec4899,#f472b6);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-hard-hat" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Site Execution</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">On-site Works</span></div>
+          </div>
+
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#0891b2,#7c3aed);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-drafting-compass" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Structural Design</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">STAAD Pro / CAD</span></div>
+          </div>
+
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#10b981,#0891b2);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-file-contract" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Tender & Bills</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">BOQ Verification</span></div>
+          </div>
+
+          <div class="portfolio-card" style="background:linear-gradient(135deg,#f59e0b,#ec4899);">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:1.5rem; color:#fff; text-align:center;">
+              <i class="fas fa-users-cog" style="font-size:2.2rem; margin-bottom:.8rem; opacity:.9;"></i>
+              <div style="font-size:.85rem; font-weight:700; line-height:1.3;">Team Coordination</div>
+            </div>
+            <div class="portfolio-overlay"><span style="color:#fff;font-size:.8rem;font-weight:600;">Leadership</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side card -->
+      <div class="card fade-up delay-2" style="flex:1; min-width:240px; padding:2.5rem;">
+        <div style="width:48px;height:5px;border-radius:3px;background:var(--grad);margin-bottom:1.25rem;"></div>
+        <h3 style="font-size:1.7rem; line-height:1.3; margin-bottom:1rem;">Our<br><span class="grad-text">Portfolio</span></h3>
+        <p style="color:#6b7280; font-size:.88rem; line-height:1.75; margin-bottom:1.5rem;">
+          From campus infrastructure at IISc to state-wide projects under KPWD — each work reflects a commitment to quality, compliance, and collaborative execution.
+        </p>
+        <a href="#contact" class="grad-btn" style="font-size:.82rem; padding:.6rem 1.3rem;">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section style="padding:5rem 2.5rem; background:linear-gradient(135deg,#f5f3ff 0%,#fdf2f8 100%);" id="contact">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:3.5rem;" class="fade-up">
+      <h2 class="grad-text" style="font-size:clamp(2rem,4vw,3rem); margin-bottom:.75rem;">Get In Touch</h2>
+      <p style="color:#9ca3af; max-width:480px; margin:0 auto; font-size:.95rem;">Have a project in mind or want to collaborate? Let's talk.</p>
+    </div>
+
+    <div class="contact-grid" style="display:flex; gap:3rem; align-items:stretch;">
+
+      <!-- LEFT INFO -->
+      <div class="card fade-up" style="flex:1; padding:2.5rem; display:flex; flex-direction:column; gap:2rem;">
+        <div>
+          <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:1.2rem; color:#1a1a2e;">Contact Details</h4>
+          <div style="display:flex;flex-direction:column;gap:1.1rem;">
+            <div style="display:flex;align-items:flex-start;gap:1rem;">
+              <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-map-marker-alt" style="color:#7c3aed;"></i></div>
+              <div>
+                <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;">Address</div>
+                <div style="font-size:.9rem;color:#374151;line-height:1.6;">CV10, IISc Quarters, Vijnanpura Campus,<br>Bengaluru – 560094</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-envelope" style="color:#7c3aed;"></i></div>
+              <div>
+                <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;">Email</div>
+                <a href="mailto:amruthak@iisc.ac.in" style="font-size:.9rem;color:#7c3aed;text-decoration:none;font-weight:500;">amruthak@iisc.ac.in</a>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-phone" style="color:#7c3aed;"></i></div>
+              <div>
+                <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;">Phone</div>
+                <a href="tel:+918762348577" style="font-size:.9rem;color:#374151;text-decoration:none;font-weight:500;">(+91) 87623 48577</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid rgba(139,92,246,.12); padding-top:1.5rem;">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;margin-bottom:1rem;">Follow Me</div>
+          <div style="display:flex; gap:.75rem;">
+            <a href="#" style="width:40px;height:40px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.88rem;text-decoration:none;box-shadow:0 4px 16px rgba(124,58,237,.3);"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:amruthak@iisc.ac.in" style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#ea4335,#fbbc04);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.88rem;text-decoration:none;box-shadow:0 4px 16px rgba(234,67,53,.3);"><i class="fas fa-envelope"></i></a>
+            <a href="#" style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#333,#555);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.88rem;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,.2);"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div style="border-top:1px solid rgba(139,92,246,.12); padding-top:1.5rem;">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;margin-bottom:.9rem;">Languages Known</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+            <span class="skill-pill">English</span>
+            <span class="skill-pill">Kannada</span>
+            <span class="skill-pill">Hindi</span>
+            <span class="skill-pill">Kodava</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <div class="card fade-up delay-1" style="flex:1; padding:2.5rem;">
+        <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:1.5rem; color:#1a1a2e;">Send a Message</h4>
+        <div style="display:flex;flex-direction:column;gap:1.1rem;">
+          <div>
+            <label style="display:block;font-size:.8rem;font-weight:600;color:#6b7280;margin-bottom:.45rem;">Your Name</label>
+            <input type="text" placeholder="Enter your name" class="form-input" />
+          </div>
+          <div>
+            <label style="display:block;font-size:.8rem;font-weight:600;color:#6b7280;margin-bottom:.45rem;">Email Address</label>
+            <input type="email" placeholder="Enter a valid email address" class="form-input" />
+          </div>
+          <div>
+            <label style="display:block;font-size:.8rem;font-weight:600;color:#6b7280;margin-bottom:.45rem;">Your Message</label>
+            <textarea placeholder="Enter your message" rows="5" class="form-input" style="resize:vertical;"></textarea>
+          </div>
+          <button onclick="handleSubmit()" class="grad-btn" style="width:100%; justify-content:center; font-size:.9rem;">
+            <i class="fas fa-paper-plane"></i> Submit Message
+          </button>
+          <div id="formMsg" style="display:none; text-align:center; color:#10b981; font-size:.88rem; font-weight:600; padding:.5rem;">
+            ✓ Message sent! I'll be in touch soon.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     NEWSLETTER STRIP
+══════════════════════════════════════════ -->
+<section style="background:var(--grad); padding:3rem 2.5rem;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
+    <div>
+      <div style="font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:.4rem;">Stay Updated</div>
+      <h3 style="font-size:1.6rem; color:#fff; line-height:1.3;">Subscribe to my newsletter<br>for engineering insights</h3>
+    </div>
+    <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
+      <input type="email" placeholder="Enter your email" style="padding:.75rem 1.2rem; border-radius:50px; border:none; font-family:'DM Sans',sans-serif; font-size:.88rem; min-width:220px; outline:none; box-shadow:0 4px 16px rgba(0,0,0,.15);" />
+      <button style="padding:.75rem 1.6rem; border-radius:50px; background:#fff; color:#7c3aed; border:none; font-weight:700; font-size:.88rem; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.15);">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer style="padding:2rem 2.5rem;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+    <div class="logo" style="font-size:1.2rem;">AAK.</div>
+    <p style="font-size:.82rem; color:#6b7280; text-align:center;">© 2025 Amruth Appachu K. All rights reserved.</p>
+    <div style="display:flex; gap:1.5rem;">
+      <a href="#" style="font-size:.82rem; color:#6b7280; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#6b7280'">Privacy Policy</a>
+      <a href="#" style="font-size:.82rem; color:#6b7280; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#6b7280'">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script>
+  // Mobile menu toggle (visual only)
+  document.getElementById('menuBtn').addEventListener('click', function(){
+    this.querySelectorAll('span')[0].style.transform = this.open ? '' : 'rotate(45deg) translate(5px,5px)';
+    this.querySelectorAll('span')[1].style.opacity = this.open ? '1' : '0';
+    this.querySelectorAll('span')[2].style.transform = this.open ? '' : 'rotate(-45deg) translate(5px,-5px)';
+    this.open = !this.open;
+  });
+
+  // Intersection Observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.style.animationPlayState='running'; }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+
+  // Form submit mock
+  function handleSubmit(){
+    const msg = document.getElementById('formMsg');
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display='none', 4000);
+  }
+
+  // Responsive exp grid
+  function handleResize(){
+    const g = document.querySelector('.exp-grid');
+    if(g) g.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
+  }
+  window.addEventListener('resize', handleResize);
+  handleResize();
+</script>
 </body>
 </html>
