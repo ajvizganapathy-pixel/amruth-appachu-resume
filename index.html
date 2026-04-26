@@ -552,145 +552,6 @@
     }
     footer a:hover { color: #f472b6; }
 
-    /* ─── GOLD MEDAL ─── */
-    @keyframes goldShimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    @keyframes medalFloat {
-      0%, 100% { transform: translateY(0px) rotate(-2deg); }
-      50%       { transform: translateY(-6px) rotate(2deg); }
-    }
-    @keyframes ribbonPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,.4); }
-      50%       { box-shadow: 0 0 0 8px rgba(251,191,36,0); }
-    }
-
-    .gold-text {
-      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: goldShimmer 3s linear infinite;
-    }
-
-    /* Floating badge on hero image */
-    .hero-medal-badge {
-      position: absolute;
-      bottom: 18px;
-      right: 14px;
-      background: linear-gradient(135deg, #1c1630 0%, #2d1f5e 100%);
-      border: 1.5px solid rgba(251,191,36,.5);
-      border-radius: 16px;
-      padding: .7rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: .65rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(251,191,36,.15);
-      animation: ribbonPulse 2.4s ease-in-out infinite;
-      z-index: 2;
-      min-width: 0;
-    }
-    .medal-icon-wrap {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fef08a, #f59e0b);
-      background-size: 200% auto;
-      animation: goldShimmer 2.5s linear infinite, medalFloat 3s ease-in-out infinite;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      box-shadow: 0 4px 14px rgba(251,191,36,.45);
-    }
-    .medal-badge-text-top {
-      font-size: .6rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      line-height: 1;
-      margin-bottom: .15rem;
-    }
-    .medal-badge-text-main {
-      font-size: .8rem;
-      font-weight: 800;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    /* Achievement banner */
-    .achievement-banner {
-      margin: 0 0 0;
-      padding: .5rem 0 2.5rem;
-    }
-    .achievement-strip {
-      background: linear-gradient(135deg, #1c1630 0%, #2d1f5e 60%, #3b1f6b 100%);
-      border-radius: 20px;
-      padding: 1.25rem 1.75rem;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-      border: 1px solid rgba(251,191,36,.2);
-      box-shadow: 0 8px 32px rgba(0,0,0,.18), inset 0 1px 0 rgba(251,191,36,.12);
-      position: relative;
-      overflow: hidden;
-    }
-    .achievement-strip::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(251,191,36,.5), transparent);
-    }
-    .achievement-strip::after {
-      content: '';
-      position: absolute; top: -60px; right: -60px;
-      width: 180px; height: 180px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(251,191,36,.06), transparent 70%);
-      pointer-events: none;
-    }
-    .big-medal {
-      font-size: 2.6rem;
-      animation: medalFloat 3s ease-in-out infinite;
-      flex-shrink: 0;
-      filter: drop-shadow(0 0 12px rgba(251,191,36,.5));
-    }
-    .achievement-divider {
-      width: 1px; height: 44px;
-      background: rgba(251,191,36,.2);
-      flex-shrink: 0;
-    }
-    @media (max-width: 480px) { .achievement-divider { display: none; } }
-
-    /* Gold stat in stats grid */
-    .stat-gold .stat-num {
-      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: goldShimmer 3s linear infinite;
-    }
-
-    /* Gold medal tag in experience */
-    .gold-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      background: linear-gradient(135deg, #fef08a, #fbbf24);
-      color: #78350f;
-      border-radius: 50px;
-      padding: .2rem .7rem;
-      font-size: .68rem;
-      font-weight: 800;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      box-shadow: 0 2px 8px rgba(251,191,36,.4);
-      margin-left: .4rem;
-      vertical-align: middle;
-      white-space: nowrap;
-    }
-
     /* ─── REVEAL ANIMATION ─── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
@@ -745,63 +606,16 @@
         </p>
       </div>
 
-      <!-- Right - profile image with floating medal badge -->
-      <div style="position:relative; display:inline-block; width:100%;">
+      <!-- Right - profile image -->
+      <div>
         <img
           src="profile.jpg"
           alt="Amruth Appachu K"
           class="hero-image"
           onerror="this.src='https://ui-avatars.com/api/?name=Amruth+Appachu+K&size=500&background=8b5cf6&color=fff&font-size=0.35&bold=true'"
         />
-        <!-- Floating VTU Gold Medal badge -->
-        <div class="hero-medal-badge">
-          <div class="medal-icon-wrap">🏅</div>
-          <div>
-            <div class="medal-badge-text-top">VTU University</div>
-            <div class="medal-badge-text-main gold-text">Gold Medalist</div>
-            <div style="font-size:.65rem; color:rgba(255,255,255,.4); margin-top:.1rem;">M.Tech · 86.83%</div>
-          </div>
-        </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════
-     ACHIEVEMENT BANNER
-═══════════════════════════════════════ -->
-<section class="achievement-banner reveal">
-  <div class="container">
-    <div class="achievement-strip">
-      <div class="big-medal">🏅</div>
-
-      <div>
-        <div style="font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:.2rem;">Academic Distinction</div>
-        <div style="font-size:1.15rem; font-weight:800; line-height:1.2;" class="gold-text">VTU University Gold Medalist</div>
-        <div style="font-size:.78rem; color:rgba(255,255,255,.55); margin-top:.25rem;">M.Tech Civil Engineering · Visvesvaraya Technological University · 86.83%</div>
-      </div>
-
-      <div class="achievement-divider"></div>
-
-      <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
-        <div>
-          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Rank</div>
-          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">1st</div>
-          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">University</div>
-        </div>
-        <div>
-          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Score</div>
-          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">86.83<span style="font-size:.8rem;">%</span></div>
-          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">Distinction</div>
-        </div>
-        <div>
-          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Year</div>
-          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">2014</div>
-          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">SJCIT, VTU</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -873,9 +687,9 @@
             <div class="stat-label">Projects</div>
             <div class="stat-num">50+</div>
           </div>
-          <div class="stat-gold">
-            <div class="stat-label">🏅 Gold Medal</div>
-            <div class="stat-num">VTU</div>
+          <div>
+            <div class="stat-label">Degrees</div>
+            <div class="stat-num">2</div>
           </div>
           <div>
             <div class="stat-label">Organisations</div>
@@ -924,11 +738,8 @@
           <div class="date">2012 – 2014</div>
         </div>
         <div class="exp-content">
-          <div class="label">
-            M.Tech – Distinction (86.83%)
-            <span class="gold-tag">🏅 Gold Medalist</span>
-          </div>
-          <p>Ranked 1st across Visvesvaraya Technological University in M.Tech Civil Engineering. Specialised in advanced structural and computational methods — awarded the VTU Gold Medal for academic excellence.</p>
+          <div class="label">M.Tech – Distinction (86.83%)</div>
+          <p>Specialised in advanced structural and computational methods in Civil Engineering, building on a strong foundation of design analysis and applied research.</p>
           <div class="loc"><i class="fas fa-map-marker-alt"></i> Bengaluru</div>
         </div>
       </div>
