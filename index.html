@@ -395,147 +395,6 @@
       margin-bottom: 1rem;
     }
 
-    /* ─── CONTACT ─── */
-    .contact-section {
-      padding: 3rem 0 4rem;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    .contact-info-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 2rem 1.75rem;
-      box-shadow: 0 6px 24px rgba(124,58,237,.06);
-    }
-    .contact-info-card h4 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--purple-2);
-      margin-bottom: 1.25rem;
-      letter-spacing: -.01em;
-    }
-    .contact-info-card .body-text {
-      font-size: .85rem;
-      color: #6b7280;
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-    .contact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: .85rem;
-      padding: .55rem 0;
-    }
-    .contact-row .icon {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(139,92,246,.1), rgba(236,72,153,.1));
-      display: flex; align-items: center; justify-content: center;
-      color: var(--purple-2);
-      font-size: .85rem;
-      flex-shrink: 0;
-    }
-    .contact-row .label-tiny {
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #9ca3af;
-    }
-    .contact-row .val {
-      font-size: .85rem;
-      color: #1c1630;
-      font-weight: 500;
-    }
-    .socials-row {
-      display: flex;
-      gap: .55rem;
-      margin-top: 1.25rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(124,58,237,.1);
-    }
-    .si {
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff;
-      font-size: .92rem;
-      text-decoration: none;
-      transition: transform .2s;
-    }
-    .si:hover { transform: translateY(-2px); }
-    .si-wa { background: linear-gradient(135deg,#25d366,#128c7e); box-shadow: 0 4px 12px rgba(37,211,102,.3); }
-    .si-ig { background: linear-gradient(135deg,#f09433,#dc2743,#bc1888); box-shadow: 0 4px 12px rgba(220,39,67,.3); }
-
-    /* Purple form card */
-    .form-card {
-      background: var(--purple-1);
-      border-radius: 24px;
-      padding: 2rem 1.75rem;
-      color: #fff;
-    }
-    .form-card h4 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 1.25rem;
-      letter-spacing: -.01em;
-    }
-    .form-input {
-      width: 100%;
-      padding: .85rem 1.1rem;
-      border: none;
-      border-radius: 14px;
-      background: rgba(255,255,255,.95);
-      font-family: inherit;
-      font-size: .88rem;
-      color: #1c1630;
-      outline: none;
-      transition: box-shadow .2s, transform .2s;
-      margin-bottom: .85rem;
-    }
-    .form-input::placeholder { color: #9ca3af; }
-    .form-input:focus {
-      box-shadow: 0 0 0 4px rgba(255,255,255,.18);
-    }
-    .form-textarea {
-      resize: vertical;
-      min-height: 110px;
-      font-family: inherit;
-    }
-    .submit-btn {
-      width: 100%;
-      padding: .95rem;
-      border: none;
-      border-radius: 14px;
-      background: var(--pink-1);
-      color: #fff;
-      font-family: inherit;
-      font-size: .9rem;
-      font-weight: 700;
-      letter-spacing: .04em;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(236,72,153,.35);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(236,72,153,.45);
-    }
-    #form-success {
-      display: none;
-      margin-top: .85rem;
-      padding: .65rem .85rem;
-      border-radius: 12px;
-      background: rgba(255,255,255,.18);
-      text-align: center;
-      font-size: .82rem;
-      font-weight: 600;
-    }
-
     /* ─── FOOTER ─── */
     footer {
       background: #1c1630;
@@ -551,6 +410,145 @@
       transition: color .2s;
     }
     footer a:hover { color: #f472b6; }
+
+    /* ─── GOLD MEDAL ─── */
+    @keyframes goldShimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes medalFloat {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50%       { transform: translateY(-6px) rotate(2deg); }
+    }
+    @keyframes ribbonPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,.4); }
+      50%       { box-shadow: 0 0 0 8px rgba(251,191,36,0); }
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3s linear infinite;
+    }
+
+    /* Floating badge on hero image */
+    .hero-medal-badge {
+      position: absolute;
+      bottom: 18px;
+      right: 14px;
+      background: linear-gradient(135deg, #1c1630 0%, #2d1f5e 100%);
+      border: 1.5px solid rgba(251,191,36,.5);
+      border-radius: 16px;
+      padding: .7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.35), 0 0 0 1px rgba(251,191,36,.15);
+      animation: ribbonPulse 2.4s ease-in-out infinite;
+      z-index: 2;
+      min-width: 0;
+    }
+    .medal-icon-wrap {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fef08a, #f59e0b);
+      background-size: 200% auto;
+      animation: goldShimmer 2.5s linear infinite, medalFloat 3s ease-in-out infinite;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(251,191,36,.45);
+    }
+    .medal-badge-text-top {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      line-height: 1;
+      margin-bottom: .15rem;
+    }
+    .medal-badge-text-main {
+      font-size: .8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    /* Achievement banner */
+    .achievement-banner {
+      margin: 0 0 0;
+      padding: .5rem 0 2.5rem;
+    }
+    .achievement-strip {
+      background: linear-gradient(135deg, #1c1630 0%, #2d1f5e 60%, #3b1f6b 100%);
+      border-radius: 20px;
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      border: 1px solid rgba(251,191,36,.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,.18), inset 0 1px 0 rgba(251,191,36,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .achievement-strip::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(251,191,36,.5), transparent);
+    }
+    .achievement-strip::after {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,191,36,.06), transparent 70%);
+      pointer-events: none;
+    }
+    .big-medal {
+      font-size: 2.6rem;
+      animation: medalFloat 3s ease-in-out infinite;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 12px rgba(251,191,36,.5));
+    }
+    .achievement-divider {
+      width: 1px; height: 44px;
+      background: rgba(251,191,36,.2);
+      flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .achievement-divider { display: none; } }
+
+    /* Gold stat in stats grid */
+    .stat-gold .stat-num {
+      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3s linear infinite;
+    }
+
+    /* Gold medal tag in experience */
+    .gold-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      background: linear-gradient(135deg, #fef08a, #fbbf24);
+      color: #78350f;
+      border-radius: 50px;
+      padding: .2rem .7rem;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(251,191,36,.4);
+      margin-left: .4rem;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
 
     /* ─── REVEAL ANIMATION ─── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
@@ -578,6 +576,7 @@
       .portfolio-info-card { margin-top: 0; align-self: end; padding: 2rem 1.75rem; }
 
       .contact-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      #awards-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (min-width: 1024px) {
@@ -616,6 +615,44 @@
         />
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     ACHIEVEMENT BANNER
+═══════════════════════════════════════ -->
+<section class="achievement-banner reveal">
+  <div class="container">
+    <div class="achievement-strip">
+      <div class="big-medal">🏅</div>
+
+      <div>
+        <div style="font-size:.65rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-bottom:.2rem;">Academic Distinction</div>
+        <div style="font-size:1.15rem; font-weight:800; line-height:1.2;" class="gold-text">VTU University Gold Medalist</div>
+        <div style="font-size:.78rem; color:rgba(255,255,255,.55); margin-top:.25rem;">M.Tech Civil Engineering · Visvesvaraya Technological University · 86.83%</div>
+      </div>
+
+      <div class="achievement-divider"></div>
+
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Rank</div>
+          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">1st</div>
+          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">University</div>
+        </div>
+        <div>
+          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Score</div>
+          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">86.83<span style="font-size:.8rem;">%</span></div>
+          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">Distinction</div>
+        </div>
+        <div>
+          <div style="font-size:.62rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.4);">Year</div>
+          <div style="font-size:1.4rem; font-weight:800;" class="gold-text">2014</div>
+          <div style="font-size:.7rem; color:rgba(255,255,255,.45);">SJCIT, VTU</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -687,9 +724,9 @@
             <div class="stat-label">Projects</div>
             <div class="stat-num">50+</div>
           </div>
-          <div>
-            <div class="stat-label">Degrees</div>
-            <div class="stat-num">2</div>
+          <div class="stat-gold">
+            <div class="stat-label">🏅 Gold Medal</div>
+            <div class="stat-num">VTU</div>
           </div>
           <div>
             <div class="stat-label">Organisations</div>
@@ -738,8 +775,11 @@
           <div class="date">2012 – 2014</div>
         </div>
         <div class="exp-content">
-          <div class="label">M.Tech – Distinction (86.83%)</div>
-          <p>Specialised in advanced structural and computational methods in Civil Engineering, building on a strong foundation of design analysis and applied research.</p>
+          <div class="label">
+            M.Tech – Distinction (86.83%)
+            <span class="gold-tag">🏅 Gold Medalist</span>
+          </div>
+          <p>Ranked 1st across Visvesvaraya Technological University in M.Tech Civil Engineering. Specialised in advanced structural and computational methods — awarded the VTU Gold Medal for academic excellence.</p>
           <div class="loc"><i class="fas fa-map-marker-alt"></i> Bengaluru</div>
         </div>
       </div>
@@ -802,156 +842,68 @@
 
 
 <!-- ═══════════════════════════════════════
-     TESTIMONIAL
+     HONOURS & AWARDS
 ═══════════════════════════════════════ -->
-<section class="testimonial-section reveal">
-  <!-- Decorative shapes (desktop) -->
-  <div class="deco-shapes">
-    <div class="deco-shape ds1"></div>
-    <div class="deco-shape ds2"></div>
-    <div class="deco-shape ds3"></div>
-    <div class="deco-shape ds4"></div>
-  </div>
-
+<section style="padding:3rem 0;" class="reveal">
   <div class="container">
-    <div class="testimonial-card">
-      <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
 
-      <!-- Avatar (gradient circle with initial as fallback look) -->
-      <div class="testi-avatar" style="display:flex;">R</div>
+    <p class="section-eyebrow">Recognition</p>
+    <h2 class="section-title">Honours &amp; Awards</h2>
 
-      <p class="testi-text">
-        Amruth's dedication to structural precision and her ability to keep multi-contractor campus projects firmly on schedule is genuinely exceptional. She handles audits, documentation, and on-ground execution with rare accountability — an invaluable part of every project she joins.
-      </p>
+    <div style="display:grid; grid-template-columns:1fr; gap:1.25rem;" id="awards-grid">
 
-      <div class="testi-name">Prof. R. Narasimhan</div>
-      <div class="testi-role">Senior Faculty &amp; Mentor</div>
-      <div class="testi-org">Indian Institute of Science, Bengaluru</div>
+      <!-- Award 1: VTU Gold Medal (full width) -->
+      <div style="background:linear-gradient(135deg,#1c1630,#2d1f5e); border-radius:22px; padding:1.6rem 1.75rem; box-shadow:0 8px 32px rgba(0,0,0,.18); display:flex; align-items:flex-start; gap:1.1rem; border:1px solid rgba(251,191,36,.25); grid-column:1/-1; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.07),transparent 70%);pointer-events:none;"></div>
+        <div style="width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,#fbbf24,#f59e0b); display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; box-shadow:0 4px 18px rgba(251,191,36,.4); animation:medalFloat 3s ease-in-out infinite; position:relative; z-index:1;">🏅</div>
+        <div style="position:relative; z-index:1;">
+          <div style="display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; margin-bottom:.3rem;">
+            <span style="font-size:1rem; font-weight:800; color:#fff;">VTU University Gold Medal</span>
+            <span class="gold-tag">🥇 1st University Rank</span>
+          </div>
+          <div style="font-size:.82rem; font-weight:600; margin-bottom:.3rem;" class="gold-text">M.Tech Civil Engineering · 86.83% · Distinction</div>
+          <div style="font-size:.8rem; color:rgba(255,255,255,.7); line-height:1.65;">Awarded the Visvesvaraya Technological University Gold Medal for securing the highest marks across the university in M.Tech Civil Engineering — recognising outstanding academic excellence.</div>
+          <div style="margin-top:.6rem; font-size:.73rem; color:rgba(255,255,255,.4); font-weight:600;"><i class="fas fa-university" style="margin-right:.3rem;"></i>SJCIT, VTU · 2014</div>
+        </div>
+      </div>
+
+      <!-- Award 2: 5-Star GRIHA Rating -->
+      <div style="background:#fff; border-radius:22px; padding:1.6rem 1.75rem; box-shadow:0 4px 30px rgba(124,58,237,.07); display:flex; align-items:flex-start; gap:1.1rem; border-left:4px solid #10b981;">
+        <div style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#059669,#10b981); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; box-shadow:0 4px 14px rgba(16,185,129,.3);">🌿</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; margin-bottom:.3rem;">
+            <span style="font-size:1rem; font-weight:800; color:#1c1630;">5-Star GRIHA Rating Award</span>
+            <span style="display:inline-flex; align-items:center; gap:.3rem; background:linear-gradient(135deg,#d1fae5,#a7f3d0); color:#065f46; border-radius:50px; padding:.2rem .7rem; font-size:.68rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase;">⭐⭐⭐⭐⭐ Certified</span>
+          </div>
+          <div style="font-size:.82rem; color:#059669; font-weight:600; margin-bottom:.3rem;">Green Rating for Integrated Habitat Assessment</div>
+          <div style="font-size:.8rem; color:#6b7280; line-height:1.65;">Received the prestigious 5-Star GRIHA (Green Rating for Integrated Habitat Assessment) Rating Award for the 500-room Ladies Hostel project at IISc, Bengaluru — recognising sustainable design, energy efficiency, and environmentally responsible construction practices.</div>
+          <div style="margin-top:.6rem; font-size:.73rem; color:#9ca3af; font-weight:600;"><i class="fas fa-map-marker-alt" style="margin-right:.3rem;"></i>Indian Institute of Science, Bengaluru</div>
+        </div>
+      </div>
+
+      <!-- Award 3: Kodava Samaja Gold Medal -->
+      <div style="background:#fff; border-radius:22px; padding:1.6rem 1.75rem; box-shadow:0 4px 30px rgba(124,58,237,.07); display:flex; align-items:flex-start; gap:1.1rem; border-left:4px solid #8b5cf6;">
+        <div style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#7c3aed,#a855f7); display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; box-shadow:0 4px 14px rgba(124,58,237,.3);">🎖️</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; margin-bottom:.3rem;">
+            <span style="font-size:1rem; font-weight:800; color:#1c1630;">Kodava Samaja Gold Medal</span>
+            <span style="display:inline-flex; align-items:center; gap:.3rem; background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1)); color:#7c3aed; border-radius:50px; padding:.2rem .7rem; font-size:.68rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border:1px solid rgba(124,58,237,.18);">Academic Excellence</span>
+          </div>
+          <div style="font-size:.82rem; color:#7c3aed; font-weight:600; margin-bottom:.3rem;">Highest Academic Achievement · 10th Standard through M.Tech</div>
+          <div style="font-size:.8rem; color:#6b7280; line-height:1.65;">Honoured by Kodava Samaja with a Gold Medal for sustained academic excellence spanning from the SSLC (10th Standard) through M.Tech — a rare recognition of consistent top performance across every stage of education.</div>
+          <div style="margin-top:.6rem; font-size:.73rem; color:#9ca3af; font-weight:600;"><i class="fas fa-award" style="margin-right:.3rem;"></i>Kodava Samaja · Community Recognition Award</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════════════════
-     PORTFOLIO
-═══════════════════════════════════════ -->
-<section class="portfolio-section reveal">
-  <div class="container">
-    <div class="portfolio-wrapper">
-
-      <!-- Tile grid -->
-      <div class="portfolio-grid">
-        <div class="pf-tile pf-1">
-          <div class="tile-content">
-            <i class="fas fa-building"></i>
-            <div class="tile-title">Campus<br>Infrastructure</div>
-          </div>
-        </div>
-        <div class="pf-tile pf-2">
-          <div class="tile-content">
-            <i class="fas fa-mobile-alt"></i>
-            <div class="tile-title">Project<br>Tracking</div>
-          </div>
-        </div>
-        <div class="pf-tile pf-3">
-          <div class="tile-content">
-            <i class="fas fa-road"></i>
-            <div class="tile-title">Roads &amp;<br>Bridges</div>
-          </div>
-        </div>
-        <div class="pf-tile pf-4">
-          <div class="tile-content">
-            <i class="fas fa-drafting-compass"></i>
-            <div class="tile-title">Structural<br>Design</div>
-          </div>
-        </div>
-        <div class="pf-tile pf-5">
-          <div class="tile-content">
-            <i class="fas fa-file-contract"></i>
-            <div class="tile-title">Tender &amp;<br>BOQ</div>
-          </div>
-        </div>
-        <div class="pf-tile pf-6" style="display:none;">
-          <div class="tile-content">
-            <i class="fas fa-users-cog"></i>
-            <div class="tile-title">Site<br>Supervision</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Info card -->
-      <div class="portfolio-info-card">
-        <h3>Our Portfolio</h3>
-        <p>
-          From state highway works under KPWD to campus infrastructure at IISc — every project reflects a commitment to engineering quality, regulatory compliance, and timely delivery.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
-<!-- ═══════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════ -->
-<section class="contact-section reveal" id="contact">
-  <div class="container">
-    <div class="contact-grid">
 
-      <!-- Info card -->
-      <div class="contact-info-card">
-        <h4>Get in touch with me</h4>
-        <p class="body-text">
-          For project enquiries, collaboration opportunities, or simply to connect — feel free to reach out through any of the channels below.
-        </p>
 
-        <div class="contact-row">
-          <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div>
-            <div class="label-tiny">Address</div>
-            <div class="val" style="font-size:.82rem; line-height:1.55;">CV10, IISc Quarters,<br>Vijnanpura Campus, Bengaluru – 560094</div>
-          </div>
-        </div>
-
-        <div class="contact-row">
-          <div class="icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <div class="label-tiny">Email</div>
-            <div class="val">amruthak@iisc.ac.in</div>
-          </div>
-        </div>
-
-        <div class="contact-row">
-          <div class="icon"><i class="fas fa-phone"></i></div>
-          <div>
-            <div class="label-tiny">Phone</div>
-            <div class="val">(+91) 87623 48577</div>
-          </div>
-        </div>
-
-        <div class="socials-row">
-          <a href="https://wa.me/918762348577" target="_blank" rel="noopener" class="si si-wa" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-          <a href="https://www.instagram.com/direct/t/918762348577" target="_blank" rel="noopener" class="si si-ig" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Form card (purple) -->
-      <div class="form-card">
-        <h4>Contact</h4>
-        <input type="text" class="form-input" placeholder="Enter your name" id="inp-name" />
-        <input type="email" class="form-input" placeholder="Enter a valid email address" id="inp-email" />
-        <textarea class="form-input form-textarea" placeholder="Enter your message" id="inp-msg" rows="4"></textarea>
-        <button class="submit-btn" onclick="handleSubmit()">Submit Message</button>
-        <div id="form-success">✓ Message sent — I'll be in touch soon!</div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════════════════════════════════
@@ -974,32 +926,6 @@
     });
   }, { threshold: 0.06 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Form submit
-  function handleSubmit() {
-    const name  = document.getElementById('inp-name').value.trim();
-    const email = document.getElementById('inp-email').value.trim();
-    const msg   = document.getElementById('inp-msg').value.trim();
-    if (!name || !email || !msg) {
-      alert('Please fill in all fields before submitting.');
-      return;
-    }
-    const ok = document.getElementById('form-success');
-    ok.style.display = 'block';
-    document.getElementById('inp-name').value  = '';
-    document.getElementById('inp-email').value = '';
-    document.getElementById('inp-msg').value   = '';
-    setTimeout(() => ok.style.display = 'none', 5000);
-  }
-
-  // Show 6th portfolio tile only on desktop (3-col grid)
-  function adjustPortfolio() {
-    const tile6 = document.querySelector('.pf-6');
-    if (!tile6) return;
-    tile6.style.display = window.innerWidth >= 768 ? 'flex' : 'none';
-  }
-  window.addEventListener('resize', adjustPortfolio);
-  adjustPortfolio();
 </script>
 </body>
 </html>
