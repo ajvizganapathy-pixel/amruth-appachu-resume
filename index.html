@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amruth Appachu K – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --purple-1: #8b5cf6;
+      --purple-2: #7c3aed;
+      --purple-3: #6d28d9;
+      --pink-1:   #ec4899;
+      --pink-2:   #f472b6;
+      --bg-soft:  #faf8ff;
+    }
+
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-soft);
+      color: #1c1630;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ── SECTION LABELS ─────────────────────────────── */
+    .section-eyebrow {
+      font-size: .73rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--purple-1);
+      margin-bottom: .3rem;
+      display: block;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 6vw, 2.5rem);
+      font-weight: 800;
+      color: var(--purple-2);
+      letter-spacing: -.02em;
+      margin-bottom: .6rem;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: .88rem;
+      color: #6b7280;
+      max-width: 460px;
+      margin: 0 auto 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(124,58,237,.12);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero { padding: 3rem 0 2.5rem; position: relative; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--purple-2);
+      letter-spacing: -.02em;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .accent { color: var(--purple-3); }
+    .hero p {
+      font-size: .92rem;
+      color: #6b7280;
+      max-width: 460px;
+      line-height: 1.75;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 28px;
+      margin-left: auto;
+      display: block;
+      box-shadow: 0 18px 50px rgba(124,58,237,.15);
+    }
+
+    /* ── ACHIEVEMENT BANNER ─────────────────────────── */
+    .achievement-banner { padding: .5rem 0 2.5rem; }
+    .achievement-strip {
+      background: linear-gradient(135deg, #1c1630 0%, #2d1f5e 60%, #3b1f6b 100%);
+      border-radius: 20px;
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      border: 1px solid rgba(251,191,36,.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,.18), inset 0 1px 0 rgba(251,191,36,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .achievement-strip::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(251,191,36,.5), transparent);
+    }
+    .achievement-strip::after {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,191,36,.06), transparent 70%);
+      pointer-events: none;
+    }
+    .big-medal {
+      font-size: 2.6rem;
+      animation: medalFloat 3s ease-in-out infinite;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 12px rgba(251,191,36,.5));
+    }
+    .achievement-divider {
+      width: 1px; height: 44px;
+      background: rgba(251,191,36,.2);
+      flex-shrink: 0;
+    }
+    @media (max-width: 480px) { .achievement-divider { display: none; } }
+
+    /* ── STATS / INFO SECTION ───────────────────────── */
+    .info-section { padding: 1rem 0 4rem; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .purple-card {
+      background: var(--purple-1);
+      color: #fff;
+      border-radius: 24px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+    .purple-card .label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .65;
+      margin-bottom: .2rem;
+    }
+    .purple-card .value { font-size: .9rem; font-weight: 500; color: #fff; }
+    .purple-card hr { border: none; height: 1px; background: rgba(255,255,255,.18); margin-top: .3rem; }
+    .socials-light { display: flex; gap: .55rem; }
+    .socials-light a {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none;
+      font-size: .9rem;
+      transition: background .2s, transform .2s;
+    }
+    .socials-light a:hover { background: rgba(255,255,255,.3); transform: translateY(-2px); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: .15rem;
+    }
+    .stat-num {
+      font-size: clamp(2.4rem, 6vw, 3.2rem);
+      font-weight: 800;
+      color: var(--pink-1);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .stat-gold .stat-num {
+      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3s linear infinite;
+    }
+    .right-info p {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--purple-2); line-height: 1.45; margin-bottom: .75rem;
+    }
+    .right-info .body { font-size: .85rem; color: #6b7280; font-weight: 400; line-height: 1.7; }
+
+    /* Skill pills */
+    .pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .pill {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: #fff;
+      border: 1px solid rgba(124,58,237,.15);
+      border-radius: 50px;
+      padding: .35rem .85rem;
+      font-size: .73rem; font-weight: 600;
+      color: var(--purple-2);
+      box-shadow: 0 2px 8px rgba(124,58,237,.05);
+    }
+
+    /* ── EXPERIENCES ────────────────────────────────── */
+    .experiences { padding: 3rem 0; }
+    .exp-group h3 { font-size: 1.2rem; font-weight: 700; color: #1c1630; margin-bottom: 1.5rem; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .4rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(124,58,237,.08);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-meta .title-line { font-weight: 700; font-size: .98rem; color: #1c1630; margin-bottom: .15rem; }
+    .exp-meta .date { font-size: .75rem; color: #9ca3af; font-weight: 500; }
+    .exp-content .label { font-weight: 700; font-size: .9rem; color: var(--purple-2); margin-bottom: .35rem; }
+    .exp-content p { font-size: .82rem; color: #6b7280; line-height: 1.7; margin-bottom: .5rem; }
+    .exp-content .loc { font-size: .75rem; color: var(--pink-1); font-weight: 600; }
+    .exp-content .loc i { margin-right: .3rem; }
+
+    /* ── GOLD / MEDAL UTILITIES ─────────────────────── */
+    @keyframes goldShimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes medalFloat {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50%       { transform: translateY(-6px) rotate(2deg); }
+    }
+    .gold-text {
+      background: linear-gradient(90deg, #b45309 0%, #f59e0b 30%, #fef08a 50%, #f59e0b 70%, #b45309 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3s linear infinite;
+    }
+    .gold-tag {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: linear-gradient(135deg, #fef08a, #fbbf24);
+      color: #78350f;
+      border-radius: 50px;
+      padding: .2rem .7rem;
+      font-size: .68rem; font-weight: 800;
+      letter-spacing: .04em; text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(251,191,36,.4);
+      margin-left: .4rem;
+      vertical-align: middle; white-space: nowrap;
+    }
+
+    /* ── REVEAL ANIMATION ───────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #1c1630; color: #b8b1d6;
+      padding: 1.4rem 1.25rem;
+      text-align: center; font-size: .78rem;
+    }
+    footer a { color: #b8b1d6; text-decoration: none; margin-left: 1rem; transition: color .2s; }
+    footer a:hover { color: #f472b6; }
+
+    /* ── DESKTOP BREAKPOINTS ────────────────────────── */
+    @media (min-width: 768px) {
+      .hero          { padding: 5rem 0 4rem; }
+      .hero-grid     { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .info-grid     { grid-template-columns: 320px 1fr; gap: 1.75rem; align-items: stretch; }
+      .experiences   { padding: 4rem 0; }
+      .exp-item      { grid-template-columns: 200px 1fr; gap: 2rem; padding: 1.5rem 0; }
+      #awards-grid   { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .container { padding: 0 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero reveal">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div>
+        <h1>
+          Hello,<br>
+          I'm Amruth<br>
+          <span class="accent">Appachu K</span>
+        </h1>
+        <p>
+          Assistant Project Engineer at the Indian Institute of Science, Bengaluru. Civil engineer with 12+ years of experience in campus infrastructure, project supervision, structural analysis, and contractor coordination.
+        </p>
+      </div>
+
+      <div>
+        <img
+          src="profile.jpg"
+          alt="Amruth Appachu K"
+          class="hero-image"
+          onerror="this.src='https://ui-avatars.com/api/?name=Amruth+Appachu+K&size=500&background=8b5cf6&color=fff&font-size=0.35&bold=true'"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     ACHIEVEMENT BANNER
+═══════════════════════════════════════ -->
+<section class="achievement-banner reveal">
+  <div class="container">
+    <div class="achievement-strip">
+      <div class="big-medal">🏅</div>
+
+      <div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.2rem;">Academic Distinction</div>
+        <div style="font-size:1.15rem;font-weight:800;line-height:1.2;" class="gold-text">VTU University Gold Medalist</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.25rem;">M.Tech Civil Engineering · Visvesvaraya Technological University · 86.83%</div>
+      </div>
+
+      <div class="achievement-divider"></div>
+
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);">Rank</div>
+          <div style="font-size:1.4rem;font-weight:800;" class="gold-text">1st</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);">University</div>
+        </div>
+        <div>
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);">Score</div>
+          <div style="font-size:1.4rem;font-weight:800;" class="gold-text">86.83<span style="font-size:.8rem;">%</span></div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);">Distinction</div>
+        </div>
+        <div>
+          <div style="font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);">Year</div>
+          <div style="font-size:1.4rem;font-weight:800;" class="gold-text">2014</div>
+          <div style="font-size:.7rem;color:rgba(255,255,255,.45);">SJCIT, VTU</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     STATS / INFO
+═══════════════════════════════════════ -->
+<section class="info-section reveal">
+  <div class="container">
+    <div class="info-grid">
+
+      <!-- Purple info card -->
+      <div class="purple-card">
+        <div>
+          <div class="label">Name</div>
+          <div class="value">Amruth Appachu K</div>
+        </div>
+        <div>
+          <div class="label">Birthday</div>
+          <div class="value">17 . 10 . 1989</div>
+        </div>
+        <div>
+          <div class="label">Role</div>
+          <div class="value">Asst. Project Engineer</div>
+        </div>
+        <div>
+          <div class="label">Email</div>
+          <div class="value" style="font-size:.82rem;">amruthak@iisc.ac.in</div>
+        </div>
+        <div>
+          <div class="label">Phone</div>
+          <div class="value">(+91) 87623 48577</div>
+        </div>
+        <div>
+          <div class="label">Location</div>
+          <div class="value" style="font-size:.82rem;line-height:1.5;">IISc Quarters,<br>Bengaluru – 560094</div>
+        </div>
+        <div>
+          <div class="label">Languages</div>
+          <div class="value" style="font-size:.82rem;">English, Kannada, Hindi, Kodava</div>
+        </div>
+        <hr>
+        <div>
+          <div class="label" style="margin-bottom:.6rem;">Connect</div>
+          <div class="socials-light">
+            <a href="https://wa.me/918762348577" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/direct/t/918762348577" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats + skills -->
+      <div>
+        <div class="stats-grid">
+          <div>
+            <div class="stat-label">XP Years</div>
+            <div class="stat-num">12+</div>
+          </div>
+          <div>
+            <div class="stat-label">Projects</div>
+            <div class="stat-num">50+</div>
+          </div>
+          <div class="stat-gold">
+            <div class="stat-label">🏅 Gold Medal</div>
+            <div class="stat-num">VTU</div>
+          </div>
+          <div>
+            <div class="stat-label">Organisations</div>
+            <div class="stat-num">2</div>
+          </div>
+        </div>
+
+        <div class="right-info">
+          <p>Civil engineering expertise rooted in precision, accountability, and on-site delivery.</p>
+          <div class="body">
+            With over a decade across the Karnataka Public Works Department and the Indian Institute of Science, I manage civil project lifecycles from initial BOQ verification and tender documentation through to on-site execution, contractor coordination, quality audits, and progress reporting.
+          </div>
+          <div class="pills">
+            <span class="pill"><i class="fas fa-drafting-compass" style="font-size:.65rem;"></i> AutoCAD</span>
+            <span class="pill"><i class="fas fa-calculator" style="font-size:.65rem;"></i> STAAD Pro</span>
+            <span class="pill"><i class="fas fa-layer-group" style="font-size:.65rem;"></i> Deep Soil</span>
+            <span class="pill"><i class="fas fa-hard-hat" style="font-size:.65rem;"></i> Site Supervision</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     EXPERIENCES
+═══════════════════════════════════════ -->
+<section class="experiences reveal">
+  <div class="container">
+    <h2 class="section-title">Experiences</h2>
+    <p class="section-sub">
+      A journey through education and professional engineering — built on hands-on field expertise, leadership, and a relentless focus on quality.
+    </p>
+
+    <!-- Education -->
+    <div class="exp-group" style="margin-bottom:2.5rem;">
+      <h3>Education</h3>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="title-line">SJCIT, VTU</div>
+          <div class="date">2012 – 2014</div>
+        </div>
+        <div class="exp-content">
+          <div class="label">
+            M.Tech – Distinction (86.83%)
+            <span class="gold-tag">🏅 Gold Medalist</span>
+          </div>
+          <p>Ranked 1st across Visvesvaraya Technological University in M.Tech Civil Engineering. Specialised in advanced structural and computational methods — awarded the VTU Gold Medal for academic excellence.</p>
+          <div class="loc"><i class="fas fa-map-marker-alt"></i> Bengaluru</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="title-line">MS Ramaiah Institute of Technology</div>
+          <div class="date">2007 – 2011</div>
+        </div>
+        <div class="exp-content">
+          <div class="label">B.E Civil Engineering – Distinction (85.9%)</div>
+          <p>Comprehensive grounding in structural design, construction technology, geotechnical principles, and project planning — graduated with distinction from one of Karnataka's premier engineering institutions.</p>
+          <div class="loc"><i class="fas fa-map-marker-alt"></i> Bengaluru</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="title-line">St. Aloysius PU College</div>
+          <div class="date">2005 – 2007</div>
+        </div>
+        <div class="exp-content">
+          <div class="label">PUC – Science (PCM) – 83.66%</div>
+          <p>Developed analytical and quantitative foundations through the science stream that paved the way into civil engineering.</p>
+          <div class="loc"><i class="fas fa-map-marker-alt"></i> Mangalore</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional -->
+    <div class="exp-group">
+      <h3>Professional</h3>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="title-line">Indian Institute of Science</div>
+          <div class="date">2023 – Present</div>
+        </div>
+        <div class="exp-content">
+          <div class="label">Assistant Project Engineer</div>
+          <p>Supervising and executing civil works across the IISc campus. Coordinating with contractors, consultants, and departments; verifying bills, BOQs, and tender documents; ensuring compliance with quality standards and timelines.</p>
+          <div class="loc"><i class="fas fa-map-marker-alt"></i> IISc Bengaluru</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="title-line">Karnataka Public Works Dept.</div>
+          <div class="date">2014 – 2022</div>
+        </div>
+        <div class="exp-content">
+          <div class="label">Assistant Engineer (on deputation)</div>
+          <p>Nine years with KPWD managing state infrastructure: roads, bridges, and public buildings. Site inspection, documentation, progress reporting, and tender oversight across multiple departments.</p>
+          <div class="loc"><i class="fas fa-map-marker-alt"></i> Karnataka</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     HONOURS & AWARDS
+═══════════════════════════════════════ -->
+<section style="padding:3rem 0;" class="reveal">
+  <div class="container">
+
+    <span class="section-eyebrow" style="text-align:center;display:block;">Recognition</span>
+    <h2 class="section-title">Honours &amp; Awards</h2>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:1.25rem;" id="awards-grid">
+
+      <!-- Award 1: VTU Gold Medal — full width flagship -->
+      <div style="background:linear-gradient(135deg,#1c1630,#2d1f5e);border-radius:22px;padding:1.6rem 1.75rem;box-shadow:0 8px 32px rgba(0,0,0,.18);display:flex;align-items:flex-start;gap:1.1rem;border:1px solid rgba(251,191,36,.25);grid-column:1/-1;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.07),transparent 70%);pointer-events:none;"></div>
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 4px 18px rgba(251,191,36,.4);animation:medalFloat 3s ease-in-out infinite;position:relative;z-index:1;">🏅</div>
+        <div style="position:relative;z-index:1;">
+          <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.3rem;">
+            <span style="font-size:1rem;font-weight:800;color:#fff;">VTU University Gold Medal</span>
+            <span class="gold-tag">🥇 1st University Rank</span>
+          </div>
+          <div style="font-size:.82rem;font-weight:600;margin-bottom:.3rem;" class="gold-text">M.Tech Civil Engineering · 86.83% · Distinction</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.65;">Awarded the Visvesvaraya Technological University Gold Medal for securing the highest marks across the university in M.Tech Civil Engineering — recognising outstanding academic excellence.</div>
+          <div style="margin-top:.6rem;font-size:.73rem;color:rgba(255,255,255,.4);font-weight:600;"><i class="fas fa-university" style="margin-right:.3rem;"></i>SJCIT, VTU · 2014</div>
+        </div>
+      </div>
+
+      <!-- Award 2: 5-Star GRIHA Rating -->
+      <div style="background:#fff;border-radius:22px;padding:1.6rem 1.75rem;box-shadow:0 4px 30px rgba(124,58,237,.07);display:flex;align-items:flex-start;gap:1.1rem;border-left:4px solid #10b981;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 14px rgba(16,185,129,.3);">🌿</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.3rem;">
+            <span style="font-size:1rem;font-weight:800;color:#1c1630;">5-Star GRIHA Rating Award</span>
+            <span style="display:inline-flex;align-items:center;gap:.3rem;background:linear-gradient(135deg,#d1fae5,#a7f3d0);color:#065f46;border-radius:50px;padding:.2rem .7rem;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">⭐⭐⭐⭐⭐ Certified</span>
+          </div>
+          <div style="font-size:.82rem;color:#059669;font-weight:600;margin-bottom:.3rem;">Green Rating for Integrated Habitat Assessment</div>
+          <div style="font-size:.8rem;color:#6b7280;line-height:1.65;">Received the prestigious 5-Star GRIHA Rating Award for the 500-room Ladies Hostel project at IISc, Bengaluru — recognising sustainable design, energy efficiency, and environmentally responsible construction practices.</div>
+          <div style="margin-top:.6rem;font-size:.73rem;color:#9ca3af;font-weight:600;"><i class="fas fa-map-marker-alt" style="margin-right:.3rem;"></i>Indian Institute of Science, Bengaluru</div>
+        </div>
+      </div>
+
+      <!-- Award 3: Kodava Samaja Gold Medal -->
+      <div style="background:#fff;border-radius:22px;padding:1.6rem 1.75rem;box-shadow:0 4px 30px rgba(124,58,237,.07);display:flex;align-items:flex-start;gap:1.1rem;border-left:4px solid #8b5cf6;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 14px rgba(124,58,237,.3);">🎖️</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.3rem;">
+            <span style="font-size:1rem;font-weight:800;color:#1c1630;">Kodava Samaja Gold Medal</span>
+            <span style="display:inline-flex;align-items:center;gap:.3rem;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.1));color:#7c3aed;border-radius:50px;padding:.2rem .7rem;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(124,58,237,.18);">Academic Excellence</span>
+          </div>
+          <div style="font-size:.82rem;color:#7c3aed;font-weight:600;margin-bottom:.3rem;">Highest Academic Achievement · 10th Standard through M.Tech</div>
+          <div style="font-size:.8rem;color:#6b7280;line-height:1.65;">Honoured by Kodava Samaja with a Gold Medal for sustained academic excellence spanning from SSLC through M.Tech — a rare recognition of consistent top performance across every stage of education.</div>
+          <div style="margin-top:.6rem;font-size:.73rem;color:#9ca3af;font-weight:600;"><i class="fas fa-award" style="margin-right:.3rem;"></i>Kodava Samaja · Community Recognition Award</div>
+        </div>
+      </div>
+
+      <!-- Award 4: NPTEL Course Topper — full width -->
+      <div style="background:#fff;border-radius:22px;padding:1.6rem 1.75rem;box-shadow:0 4px 30px rgba(124,58,237,.07);display:flex;align-items:flex-start;gap:1.1rem;border-left:4px solid #0891b2;grid-column:1/-1;">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0891b2,#0e7490);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;box-shadow:0 4px 14px rgba(8,145,178,.3);">🌍</div>
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:.3rem;">
+            <span style="font-size:1rem;font-weight:800;color:#1c1630;">NPTEL Course Topper</span>
+            <span style="display:inline-flex;align-items:center;gap:.3rem;background:linear-gradient(135deg,#cffafe,#a5f3fc);color:#0e7490;border-radius:50px;padding:.2rem .7rem;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">🏆 Topper</span>
+            <span style="display:inline-flex;align-items:center;gap:.3rem;background:linear-gradient(135deg,#fef9c3,#fef08a);color:#78350f;border-radius:50px;padding:.2rem .7rem;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">85 / 100</span>
+          </div>
+          <div style="font-size:.82rem;color:#0891b2;font-weight:600;margin-bottom:.3rem;">Climate Change Science · Jan – Apr 2026 · 12-Week Course · 4 Credits</div>
+          <div style="font-size:.8rem;color:#6b7280;line-height:1.65;margin-bottom:.85rem;">Recognised as a <strong style="color:#0e7490;">Course Topper</strong> by NPTEL (IIT Madras) in Climate Change Science — a 12-week, 4-credit programme covering climate systems, mitigation strategies, and environmental policy. Scored <strong style="color:#1c1630;">85/100</strong> overall: Assignment 24.69/25 and Exam 60/75.</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">
+            <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:.35rem .8rem;font-size:.76rem;color:#0369a1;font-weight:600;">📝 Assignment &nbsp;<strong>24.69 / 25</strong></div>
+            <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:.35rem .8rem;font-size:.76rem;color:#0369a1;font-weight:600;">📋 Exam &nbsp;<strong>60 / 75</strong></div>
+            <div style="background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:.35rem .8rem;font-size:.76rem;color:#065f46;font-weight:600;">🎓 Final Score &nbsp;<strong>85 / 100</strong></div>
+            <div style="background:#faf5ff;border:1px solid #d8b4fe;border-radius:10px;padding:.35rem .8rem;font-size:.76rem;color:#6d28d9;font-weight:600;">💳 Credits &nbsp;<strong>4</strong></div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;">
+            <div style="font-size:.73rem;color:#9ca3af;font-weight:600;">
+              <i class="fas fa-certificate" style="margin-right:.3rem;color:#0891b2;"></i>NPTEL · IIT Madras &nbsp;·&nbsp;
+              <span style="font-family:monospace;font-size:.68rem;color:#b0b3be;">NPTEL26CE13S1550200042</span>
+            </div>
+            <a href="https://storage.googleapis.com/2026-mar-halltickets/certificate-generation-apr26/final/regular/noc26-ce13/NOC26CE13S155020004204365467.pdf"
+               target="_blank" rel="noopener"
+               style="display:inline-flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;border-radius:50px;padding:.4rem 1rem;font-size:.74rem;font-weight:700;text-decoration:none;box-shadow:0 3px 12px rgba(8,145,178,.3);transition:transform .2s,box-shadow .2s;"
+               onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 18px rgba(8,145,178,.4)'"
+               onmouseout="this.style.transform='';this.style.boxShadow='0 3px 12px rgba(8,145,178,.3)'">
+              <i class="fas fa-external-link-alt" style="font-size:.65rem;"></i> View Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  © 2026 Amruth Appachu K. All rights reserved.
+  <a href="#">Privacy Policy</a>
+</footer>
+
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
